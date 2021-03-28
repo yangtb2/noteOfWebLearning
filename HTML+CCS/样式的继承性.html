@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>样式的继承性</title>
+    <style>
+        body{
+            /*给body设置文本属性，h2，ul，li都会继承其属性
+            给body设置尺寸属性，h2，ul，li不会继承*/
+            color: red;
+            text-decoration: underline 1px white;
+            width: 1000px;
+            height: 1000px;
+            border: red 1px solid;
+        }
+        h2{
+            /*给h2重写color属性*/
+            color: blue;
+        }
+        ul{
+            /*给ul重写color属性*/
+            color: green;
+        }
+        li{
+            /*li继承ul的color和body的text-decoration
+            并且重写了text-decoration*/
+            text-decoration: none;
+        }
+
+    </style>
+</head>
+<body>
+    <h1>继承性</h1>
+    <h2>样式的继承性遵循以下原则：</h2>
+    <ul>
+        <li>外层元素的样式可以被内层元素继承</li>
+        <li>内层元素可以重写继承的样式</li>
+        <li>只有文本和字体属性可以被继承</li>
+    </ul>
+</body>
+</html>

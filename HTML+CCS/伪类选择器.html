@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>伪类选择器</title>
+    <style>
+        :link,:visited{
+            text-decoration: none;
+            color: #44f;
+        }
+        dd>:hover{
+            color: gold;
+        }
+    </style>
+</head>
+<body>
+    <dl>
+        <dt>为超链接设置样式</dt>
+        <dd><a href="#">未访问的用link</a></dd>
+        <dd><a href="#">已访问的用visited</a></dd>
+        <dd><a href="#">鼠标放在上面用hover</a></dd>
+        <dd><a href="#">鼠标按下用active</a></dd>
+    </dl>
+</body>
+</html>

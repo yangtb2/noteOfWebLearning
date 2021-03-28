@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>简单输入实例</title>
+</head>
+<body>
+    <input type="number" name="age">
+    <span id="age"></span>
+</body>
+<script>
+    let span = document.querySelector('#age');
+    document.querySelector('[name="age"]').addEventListener("keyup", function(){
+        let msg = '';
+        if(this.value > 90){
+            msg = '年龄不能超过90岁';
+        }
+        span.innerHTML = msg;
+    })
+</script>
+</html>

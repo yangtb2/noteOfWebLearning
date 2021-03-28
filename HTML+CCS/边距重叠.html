@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>边距重叠</title>
+    <!-- 如果一个盒子没有上补白和上边框，则其上边距和文档流中第一个子元素的上边距重叠 -->
+    <style>
+        .f{
+            height: 300px;
+            width: 300px;
+            background-color: blue;
+        }
+        .c{
+            height: 100px;
+            width: 100px;
+            background-color: red;
+            /* padding: 30px; */
+            margin-top: 100px;
+        }
+        .gc{
+            height: 30px;
+            width: 30px;
+            background-color: green;
+            /* margin: 30px; */
+        }
+    </style>
+</head>
+<body>
+    <div class="f">
+        <div class="c">
+            <div class="gc"></div>            
+        </div>
+    </div>
+</body>
+</html>

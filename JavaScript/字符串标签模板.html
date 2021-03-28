@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>字符串标签模板</title>
+    <style>
+        body{
+            margin: 0;
+            padding: 0;
+        }
+        ul{
+            list-style-type: none;
+            width: 500px;
+            border: 1px solid red;
+            padding: 3px;
+            /* margin-top: 1px; */
+        }
+        li:nth-child(2n+1){
+            background-color: rgb(26, 26, 26);
+            color: white;
+        }
+        li:nth-child(2n+1)>a{
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        "use strict"
+        let lessons = [
+        {title: "后盾人媒体查询响应式布局", author: "后盾人向军"},
+        {title: "FLEX 弹性盒模型", author: "后盾人"},
+        {title: "GRID 栅格系统后盾人教程", author: "古老师"}
+        ];
+        function template(){
+            return `<ul>
+                ${lessons.map((item) => 
+                    link`<li>作者：${item.author}&nbsp;&nbsp;课程：${item.title}</li>`
+                    ).join("")}
+                    </ul>`;
+        }
+        function link(strings, ...vars){
+            return strings.map((str, key) =>{
+                return (
+                    str + (vars[key]? vars[key]
+                    .replace(
+                    "后盾人",`<a href="https://www.houdunren.com">后盾人</a>`
+                    ) : "")
+                );
+            }).join("")
+        }
+        document.body.innerHTML += template();
+    </script>
+</body>
+</html>

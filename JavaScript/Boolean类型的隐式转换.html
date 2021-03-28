@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boolean类型的隐式转换</title>
+</head>
+<body>
+    <script>
+        "use strict";
+        // 非Number类型做比较时，隐式转换为Number类型
+        // 非Boolean类型做判断条件时，隐式转换为Boolean类型
+
+        // let number = 11;
+        // console.log(number == true); //false，true->1
+        // console.log(number > true); //true，true->1
+        // console.log(true == number); //false, true->1
+        // console.log(true == (number && 11));  //false, number&&11->11
+        // console.log(true == (number && true));  //true, number&&true->true
+        let arr = [1, 2, 3];
+        console.log(Number(arr));
+        console.log(arr == true); //false
+        console.log(arr == false); //false
+
+        // console.log(NaN == NaN); //false,NaN不能和NaN比较
+
+        // let obj;
+        // if(!obj){
+        //     console.log(typeof obj);
+        //     console.log(obj); //undefine->false
+        // }
+
+        // let obj = {};
+        // if(obj){
+        //     console.log(typeof obj);
+        //     console.log(obj); //object->true
+        // }
+
+        // let obj = null;
+        // if(!obj){
+        //     console.log(typeof obj);
+        //     console.log(obj); //null->false
+        // }
+
+        // let obj = ''
+        // if(!obj){
+        //     console.log(typeof obj);
+        //     console.log(obj); //''->false
+        // }
+    </script>
+</body>
+</html>

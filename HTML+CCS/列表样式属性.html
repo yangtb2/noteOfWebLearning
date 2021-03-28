@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>列表样式属性</title>
+    <style>
+        .ul1{
+            list-style-type: square;
+        }
+        .ul2{
+            list-style-position: inside;
+        }
+        .ul2,.ul4 li{
+            border: 1px solid red;
+        }
+        .ul3{
+            list-style-image: url(./triangle.e8097649.svg);
+            background-color: #fff;
+            color: #000;
+        }
+        .ul4{
+            /*设置了list-style-image属性，
+            则list-style-type属性不生效，无论顺序如何*/
+            list-style: url(./triangle.e8097649.svg) inside disc;
+            background-color: #fff;
+            color: #000;
+        }
+    </style>
+</head>
+<body>
+    <h3>list-style-type</h3>
+    <ul class="ul1">
+        <li>disc,实心圆</li>
+        <li>circle,空心圆</li>
+        <li>square,实心方块</li>
+        <li>none,无</li>
+    </ul>
+    <h3>list-style-position</h3>
+    <ul class="ul2">
+        <li>inside,在列表项元素里面</li>
+        <li>outside,在列表项元素外面</li>
+    </ul>
+    <h3>list-style-image</h3>
+    <ul class="ul3">
+        <li>将表头符号设置为图片</li>
+    </ul>
+    <h3>list-style</h3>
+    <ul class="ul4">
+        <li>简写属性</li>
+        <li>顺序任意</li>
+        <li>个数任意</li>
+    </ul>
+</body>
+</html>

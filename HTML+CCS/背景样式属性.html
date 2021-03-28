@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>背景样式属性</title>
+    <style>
+        div{
+            width: 300px;
+            height: 200px;
+        }
+        .box1{
+            background-color: red;
+        }
+        .box2,.box3,.box4,.box5{
+            background-image: url(./background.png);
+        }
+        .box3{
+            /*background-repeat:  repeat;*/
+            background-repeat:  round no-repeat; /*水平 垂直*/
+        }
+        .box4{
+            background-repeat: no-repeat;
+            background-position: right bottom;
+        }
+        body{
+            border: 1px solid red;
+            background-image: url(./demo1.jpeg);
+            background-repeat: no-repeat;
+            background-attachment: scroll;
+        }
+    </style>
+</head>
+<body>
+    <h2>背景样式属性</h2>
+    <ul>
+        <li>
+            background-color设置背景颜色
+            <div class="box1"></div>
+        </li>
+        <li>
+            background-image设置背景图片
+            <div class="box2"></div>
+        </li>
+        <li>
+            background-repeat设置背景图片的平铺类型
+            <div class="box3"></div>
+        </li>
+        <li>
+            background-position设置背景图片的位置
+            <div class="box4"></div>
+        </li>
+        <li>
+            background-attachment决定背景图像的位置是在视口内固定，或者随着包含它的区块滚动。
+        </li>
+        <li>
+            background设置简写属性，无个数和顺序要求
+            <div class="box6"></div>
+        </li>
+    </ul>
+</body>
+</html>

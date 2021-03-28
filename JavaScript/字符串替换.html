@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>字符串替换</title>
+    <base href="" target="blank">
+    <style>
+        body{
+            margin: 0;
+            padding: 0;
+            font-family: "宋体";
+            font-size: x-large;
+        }
+        div{
+            border: 1px solid blue;
+            width: 100%;            
+        }
+        a:link, :visited{
+            color: blue;
+        }
+        a:hover{
+            color: gold;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        "use strict"
+        let school = '中山大学理工学院';
+        // console.log(school.replace('理工', '物理')); //中山大学物理学院
+
+        let newSchool = school.replace('理工', '物理');
+        // console.log(school); //中山大学理工学院
+
+        // console.log(newSchool); //中山大学物理学院
+
+        let description = `&nbsp;&nbsp;中山大学由孙中山先生创办，有着一百多年办学传统。作为中国教育部直属高校，通过部省共建，中山大学已经成为一所国内一流、国际知名的现代综合性大学。现由广州校区、珠海校区、深圳校区三个校区、五个校园及十家附属医院组成。中山大学正在向世界一流大学迈进，努力成为全球学术重镇。
+        <br />&nbsp;&nbsp;中山大学物理学院坐落于中山大学广州校区南校园，集云山珠水之秀，沐岭南开明之风。中山大学物理学科始建于1924年创校之初，1952年并岭南大学物理系，1981年恢复理论物理和光学博士点，1984年筹建首批国家重点实验室之一“超快速激光光谱学国家重点实验室”，1985年成立国家首批博士后流动站之一“物理学博士后流动站”，1993年获批建设国家物理学人才培养基地，1998年物理学科成为首批博士、硕士学位授权一级学科。在第三轮学科评估中，物理学科高被引论文总量全国排名第三。
+        <br />&nbsp;&nbsp;2015年物理学科经整合成立物理学院，涵盖理论物理、凝聚态物理、光学、高能物理、量子物理、生物物理、能源物理等二级学科及研究方向；现有“973”和重大科学研究计划首席科学家2人、各类国家级人才项目和高层次引进人才20人；拥有国家重点实验室1个（光电材料与技术国家重点实验室，共建），广东省重点实验室1个，广东省工程技术研究开发中心1个，校级研究所/中心4个，物理学博士后流动站；下辖物理学系、光学与光学工程系，设物理学、光电信息科学与工程（理）2个本科专业；拥有国家级物理实验教学示范中心和物理学国家理科基础科学研究和教学人才培养基地。
+        <br />&nbsp;&nbsp;学院充分利用地处改革开放前沿的优越条件，与美国、法国、英国、德国、日本、澳大利亚、瑞士等国家以及港澳台地区的众多著名学府、学术机构和学者建立了广泛的学术交流关系，积极推动学科建设、人才培养、科学研究等方面稳步前进。`
+        let div = document.createElement('div');
+        let addr = [
+            {name : '中山大学', ad : `http://www.sysu.edu.cn`},
+            {name : '物理学院', ad : `http://spe.sysu.edu.cn`}
+        ];
+        // for(let val of addr){
+        //     for(let key in val){
+        //         console.log(key, val[key]);
+        //     }
+        // }
+        document.body.append(div);
+        div.innerHTML += 
+        addr.reduce((pre, item) =>{
+            //console.log(item.name, item.ad);
+            return pre.replaceAll(
+            item.name,`<a href=${item.ad}>${item.name}</a>`
+        );}, description);
+    </script>
+</body>
+</html>

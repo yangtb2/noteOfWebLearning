@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>相邻元素选择器</title>
+    <style>
+        .item2+li{
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <ul>
+        <li class="item1">北京</li> <!--在item2的上面，不是相邻元素-->
+        <li class="item2">上海</li>
+        <li class="item3">广州</li> <!--item2的相邻元素-->
+        <li class="item4">深圳</li> <!--与item2中间隔了其他元素，不是相邻元素-->
+    </ul>
+</body>
+</html>

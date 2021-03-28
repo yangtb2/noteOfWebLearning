@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>浮动和清除浮动</title>
+    <style>
+        .box1,.box2{
+            border: 3px solid black;
+            width: 500px;
+            height: unset;
+            margin: 5px auto;
+        }
+        .box2{
+            overflow: hidden;
+        }
+        div{
+            height: 100px;
+            width: 100px;
+        }
+        .child1{
+            background-color: red;
+            float: left; /*向左浮动*/
+        }
+        .child2{
+            background-color: blue;
+            float: right; /*向右浮动*/
+        }
+        .child3{
+            background-color: green;
+            float: left; /*向左浮动*/
+        }
+        .clear{
+            width: unset;
+            height: unset;
+            clear: both;
+        }
+        span{
+            background-color: greenyellow;
+            border: black;
+        }
+    </style>
+</head>
+<body>
+    <div class="box1">
+        <div class="child1"></div>
+        <div class="child2"></div>
+        <div class="child3"></div>
+        <div class="clear"></div>
+    </div>
+    清除浮动的方法:<br />
+    1.给父元素设置固定高度<br />
+    2.在最后一个浮动的元素后面加一个div，并给它设置clear属性<br />
+    3.给父元素设置overfl:hidden
+    <div class="box2">
+        <div class="child1"></div>
+        <div class="child2"></div>
+        <div class="child3"></div>
+    </div>
+</body>
+</html>

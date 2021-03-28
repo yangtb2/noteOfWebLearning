@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>属性选择器</title>
+    <style>
+        [class]{
+            color: red;
+        }
+        [class=part2]{
+            color: blue;
+        }
+        [class^=P]{
+            color: green;
+        }
+        [class$=rt4]{
+            color: hotpink;
+        }
+        [class*=ART]{
+            color: purple;
+        }
+    </style>
+</head>
+<body>
+    <p class="part1">含class属性的元素</p>
+    <p class="part2">class值为part2的元素</p>
+    <p class="Part3">class值以P开头的元素</p>
+    <p class="part4">class值以4结尾的元素</p>
+    <p class="pART5">class值含ART的元素</p>
+</body>
+</html>

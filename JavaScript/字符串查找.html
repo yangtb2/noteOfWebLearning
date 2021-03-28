@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>字符串查找</title>
+</head>
+<body>
+    <script>
+        "use strict";
+        // const str = 'abcdefgabcd';
+        // console.log(str.indexOf('a', str.length)); //-1
+        // console.log(str.includes('a')); //true
+        // console.log(str.includes('a', str.length)); //false
+
+        // console.log(str.lastIndexOf('a')); //7
+        // console.log(str.lastIndexOf('a', 6)); //0
+
+        // console.log(str.startsWith('a')); //true
+        // console.log(str.startsWith('b')); //false
+        // console.log(str.endsWith('d')); //true
+        // console.log(str.endsWith('D'));  //false
+        // console.log(str.toUpperCase().endsWith('D')) //true;
+
+        const str = '中山大学物理学院';
+        const word = ['大学', '物理'];
+        let some = word.some(word =>{
+            //console.log(word);
+            return str.includes(word);
+        });
+        console.log(some); //true
+
+        let map = word.map(word =>{
+            //console.log(word);
+            return str.includes(word);
+        });
+        console.log(map); //[true, true]
+    </script>
+</body>
+</html>
