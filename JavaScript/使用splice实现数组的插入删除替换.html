@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>使用splice实现数组的插入删除替换</title>
+</head>
+<body>
+    <script>
+        "use strict";
+        let arr = [1, 2, 3, 4, 5];
+        // splice的作用是从指定索引处开始
+        // 删除指定长度的数组元素
+        // 并返回被删除的子数组
+
+        // 实现删除数组元素
+        // let part = arr.splice(1, 3);
+
+        // 截取数组后把新的元素从被截取的位置放入
+        // let part = arr.splice(1, 1, "new");
+
+        // 截取长度=0实现在指定索引处插入
+        let part = arr.splice(2, 0, 'insert');
+
+        console.table(arr);
+        console.table(part);
+    </script>
+</body>
+</html>

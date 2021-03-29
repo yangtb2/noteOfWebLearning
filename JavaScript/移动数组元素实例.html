@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>移动数组元素实例</title>
+</head>
+<body>
+    <script>
+        "use strict";
+        function move(arr, from, to, creatNew = true){
+            if(from < 0 || from >= arr.length 
+            || to < 0 || to >= arr.length){
+                console.error('参数错误');
+                return;
+            }
+            let newArray = creatNew? [...arr] : arr;
+            let item = newArray.splice(from, 1);
+            newArray.splice(to, 0, ...item);
+            return newArray;
+        }
+        let arr = [1, 2, 3, 4, 5];
+        console.table(move(arr, 4, 0));
+        console.table(arr);
+    </script>
+</body>
+</html>
