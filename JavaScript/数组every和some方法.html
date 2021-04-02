@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数组every和some方法</title>
+</head>
+<body>
+    <script>
+        "use strict";
+        let arr = [
+            {name : 'zhangsna', js : 98, csharp : 60},
+            {name : 'lisi', js : 80, csharp : 69},
+            {name : 'wangwu', js : 55, csharp : 70}
+        ];
+        let pass = arr.every(function(value){
+            return value.js > 60;
+        });
+        console.log(pass? "全部及格啦" : "没有全部及格");
+        
+        let high = arr.some(function(value){
+            return value.js > 90 || value.csharp > 90;
+        });
+        console.log(high? "有90分以上的" : "没有90分以上的");
+    </script>
+</body>
+</html>
