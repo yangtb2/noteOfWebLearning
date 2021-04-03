@@ -48,6 +48,14 @@
         //     console.log(typeof obj);
         //     console.log(obj); //''->false
         // }
+        console.log(true || false && false); //=>true, &&优先级高于||
+        let a;
+        //虽然&&优先级高，但是这里却没有进行短路运算，a的结果为false
+        //对短路运算的理解错了，因为&&虽然先运算，但&&的结果仍在||的右边
+        // 不会把||的左边短路
+        // console.log((a = false) || true && true);
+        console.log((a = false) || true);
+        console.log(a);
     </script>
 </body>
 </html>
