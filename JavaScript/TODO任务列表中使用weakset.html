@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TODO任务列表中使用weakset</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        ul{
+            list-style-type: none;
+            width: 150px;
+            height: 110px;
+            position: fixed;
+            left: 50%;
+            top: 50%;
+            margin: -55px 0 0 -75px;
+        }
+        ul>li{
+            position: relative;
+            margin: 2px 0;
+            height: 30px;
+            border: 2px solid #d67731;
+            line-height: 30px;
+            padding: 0 3px;
+            font-size: small;
+            font-weight: bold;
+        }
+        ul>li>a{
+            display: block;
+            position: absolute;
+            background-color: #ff0000;
+            right: 3px;
+            top: 3px;
+            width: 24px;
+            height: 24px;
+            text-align: center;
+            line-height: 24px;
+            font-size: large;
+            color: #ffffff;
+            border-radius: 5px;
+        }
+        a:link, :visited{
+            text-decoration: none;
+        }
+        .delete{
+            border: 2px solid #afafaf;
+            color: #7f7f7f;
+        }
+        .delete>a{
+            background-color: #17967c;
+        }
+    </style>
+</head>
+<body>
+    <ul>
+        <li>JavaScript <a href="javascript:;">x</a></li>
+        <li>HTML <a href="javascript:;">x</a></li>
+        <li>CSS <a href="javascript:;">x</a></li>
+    </ul>
+</body>
+<script>
+    class Todo{
+        constructor(){
+            this.items = document.querySelectorAll("ul>li");
+            // console.log(this.items);
+            this.list = new WeakSet();
+            this.items.forEach(item => this.list.add(item));
+        }
+        run(){
+            this.addEvent();
+        }
+        addEvent(){
+            this.items.forEach(item => {
+                let a = item.querySelector("a");
+                // console.log(a);
+                a.addEventListener("click", event => {
+                    const parentElement = event.target.parentElement;
+                    if(this.list.has(parentElement)){
+                        parentElement.classList.add("delete");
+                        this.list.delete(parentElement);
+                        a.innerHTML = "+";
+                    }
+                    else{
+                        parentElement.classList.remove("delete");
+                        this.list.add(parentElement);
+                        a.innerHTML = "x"
+                    }
+                })
+            })
+        }
+    }
+    new Todo().run();
+    // console.log(todo.list);
+</script>
+</html>
