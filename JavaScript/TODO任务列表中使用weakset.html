@@ -41,7 +41,7 @@
             line-height: 24px;
             font-size: large;
             color: #ffffff;
-            border-radius: 5px;
+            border-radius: 12px;
         }
         a:link, :visited{
             text-decoration: none;
@@ -52,14 +52,15 @@
         }
         .delete>a{
             background-color: #17967c;
+            border-radius: 5px;
         }
     </style>
 </head>
 <body>
     <ul>
-        <li>JavaScript <a href="javascript:;">x</a></li>
-        <li>HTML <a href="javascript:;">x</a></li>
-        <li>CSS <a href="javascript:;">x</a></li>
+        <li>JavaScript <a href="javascript:;">-</a></li>
+        <li>HTML <a href="javascript:;">-</a></li>
+        <li>CSS <a href="javascript:;">-</a></li>
     </ul>
 </body>
 <script>
@@ -87,10 +88,10 @@
                     else{
                         parentElement.classList.remove("delete");
                         this.list.add(parentElement);
-                        a.innerHTML = "x"
+                        a.innerHTML = "-"
                     }
-                })
-            })
+                });
+            });
         }
     }
     new Todo().run();
