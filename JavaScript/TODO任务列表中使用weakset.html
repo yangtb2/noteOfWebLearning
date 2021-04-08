@@ -64,6 +64,7 @@
     </ul>
 </body>
 <script>
+    "use strict";
     class Todo{
         constructor(){
             this.items = document.querySelectorAll("ul>li");
@@ -88,7 +89,7 @@
                     else{
                         parentElement.classList.remove("delete");
                         this.list.add(parentElement);
-                        a.innerHTML = "-"
+                        a.innerHTML = "-";
                     }
                 });
             });

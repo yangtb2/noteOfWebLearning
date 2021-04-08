@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>使用Map遍历DOM节点</title>
+    <style>
+        div{
+            border: 1px solid red;
+            margin-top: 10px;
+            width: 200px;
+            height: 30px;
+            line-height: 30px;
+        }
+    </style>
+</head>
+<body>
+    <div name="中山大学" class="info">sysu.edu.cn</div>
+    <div name="物理学院" class="info">spe.sysu.edu.cn</div>
+</body>
+<script>
+    "use strict";
+    // let map = new Map();
+    // document.querySelectorAll("div").forEach(item => 
+    //     map.set(item, {content: item.getAttribute("name")}));
+    // map.forEach((value, key) => 
+    //     key.addEventListener("click", () => 
+    //          alert(value.content)));
+    class Todo{
+        constructor(){
+            this.map = new WeakMap();
+            this.items = document.querySelectorAll("div");
+            this.items.forEach(item =>
+                this.map.set(item, {content: item.getAttribute("name")}));
+        }
+        run(){
+            this.addEvent();
+        }
+        addEvent(){
+            this.items.forEach(item =>{
+                item.addEventListener("click", () => {
+                    if(this.map.has(item)){
+                        item.innerText += this.map.get(item).content;
+                        this.map.delete(item);
+                    }
+                    else{
+                        item.innerText = 
+                            item.innerText.replaceAll(item.getAttribute("name"), "");
+                        this.map.set(item, {content: item.getAttribute("name")});
+                    }
+                });
+            });
+        }
+    }
+    new Todo().run();
+</script>
+</html>
