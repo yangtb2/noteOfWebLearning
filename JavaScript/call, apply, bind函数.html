@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>call, apply, bind函数</title>
+  </head>
+
+  <body>
+    <button id="call">call函数</button>
+    <button id="apply">apply函数</button>
+    <button id="bind">bind函数</button>
+  </body>
+  <script>
+    "use strict";
+    let sum = function (...args) {
+      return `${this.info}   ${args.reduce((a, b) => a + b)}`;
+    };
+    document.getElementById("call").addEventListener("click", function (event) {
+      alert(
+        `${event.target.innerHTML}: ${sum.call(
+          { info: "改变函数的this并立即执行,剩余参数依次传入" },
+          1,
+          2,
+          3
+        )}`
+      );
+    });
+    document
+      .getElementById("apply")
+      .addEventListener("click", function (event) {
+        alert(
+          `${event.target.innerHTML}: ${sum.apply(
+            { info: "改变函数的this并立即执行，剩余参数以数组传入" },
+            [1, 2, 3]
+          )}`
+        );
+      });
+    document.getElementById("bind").addEventListener(
+      "click",
+      function (event) {
+        alert(`${event.target.innerHTML}: ${this.info}`);
+      }.bind({ info: "改变函数的this但不立即执行而是返回新的函数" })
+    );
+  </script>
+</html>

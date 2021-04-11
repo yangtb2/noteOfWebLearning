@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>构造函数方法继承</title>
+  </head>
+  <body>
+    <script>
+      "use strict";
+      function Request() {
+        this.add = function (b) {
+          return this.val + b;
+        };
+      }
+
+      function Article() {
+        this.val = 1;
+        Request.call(this);
+      }
+
+      let a = new Article();
+      console.log(a.add(2)); //3
+    </script>
+  </body>
+</html>
