@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>instanceof检查的是什么</title>
+  </head>
+  <body>
+    <script>
+      "use strict";
+      function A() {}
+      console.log(A.prototype); //A.prototype = A()
+      let a = new A();
+      console.log(a.__proto__); //a.__proto__ = A()
+      console.log(a instanceof A); //true;
+      function B() {}
+      A.prototype = B.prototype;
+      console.log(A.prototype); //A.prototype = B()
+      console.log(a.__proto__); //a.__proto__ = A()
+      console.log(a instanceof A); //flase
+      //可见，instanceof检查的是
+      //a的原型链上是否存在A.prototype而不是A本身
+    </script>
+  </body>
+</html>

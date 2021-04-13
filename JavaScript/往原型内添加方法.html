@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>往原型内添加方法</title>
+  </head>
+  <body>
+    <script>
+      "use strict";
+      // 两个原型相同的对象，往一个对象的原型内添加方法
+      // 另一个对象的原型会跟着改变吗
+      let a = {};
+      let b = {};
+      console.log(Object.getPrototypeOf(a) == Object.getPrototypeOf(b));
+      a.__proto__.render = function () {
+        console.log("往a的原型中添加了render方法");
+      };
+      b.render(); //ouput:往a的原型中添加了render方法
+      console.log(a, b); //b的原型中也有了render方法
+      //可见，a和b的原型是同一个实际存在的对象
+      console.log(Object.getPrototypeOf(a) === Object.getPrototypeOf(b));
+    </script>
+  </body>
+</html>
