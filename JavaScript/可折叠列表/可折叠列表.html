@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>可折叠列表</title>
+    <link rel="stylesheet" href="./Slider.css" />
+  </head>
+  <body>
+    <dl class="suitableList">
+      <dt class="suitableListFirst">第一节标题</dt>
+      <dd>
+        第一节内容第一节内容第一节内容第一节内容第一节内容第一节内容第一节内容
+        第一节内容第一节内容第一节内容第一节内容第一节内容第一节内容第一节内容
+        第一节内容第一节内容第一节内容第一节内容第一节内容第一节内容第一节内容
+        第一节内容第一节内容第一节内容第一节内容第一节内容第一节内容第一节内容
+      </dd>
+      <dt>第1.5节标题</dt>
+      <dd>
+        第1.5节内容第1.5节内容第1.5节内容第1.5节内容第1.5节内容第1.5节内容
+        第1.5节内容第1.5节内容第1.5节内容第1.5节内容第1.5节内容第1.5节内容
+        第1.5节内容第1.5节内容第1.5节内容第1.5节内容第1.5节内容第1.5节内容
+        第1.5节内容第1.5节内容第1.5节内容第1.5节内容第1.5节内容第1.5节内容
+      </dd>
+      <dt>第二节标题</dt>
+      <dd class="suitableListLast">
+        第二节内容第二节内容第二节内容第二节内容第二节内容第二节内容第二节内容
+        第二节内容第二节内容第二节内容第二节内容第二节内容第二节内容第二节内容
+        第二节内容第二节内容第二节内容第二节内容第二节内容第二节内容第二节内容
+        第二节内容第二节内容第二节内容第二节内容第二节内容第二节内容第二节内容
+      </dd>
+    </dl>
+  </body>
+  <script src="./SliderAnimation.js"></script>
+  <script>
+    "use strict";
+    let slider = new Slider(".suitableList", "dt", "dd");
+  </script>
+</html>
