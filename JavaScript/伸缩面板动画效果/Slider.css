@@ -16,12 +16,16 @@
   padding-left: 5px;
   font-weight: bold;
 }
+.suitableList > dt {
+  cursor: pointer;
+}
 .suitableList > dd {
   background-color: #f2bc14;
   height: 150px;
   padding-left: 5px;
   text-indent: 2em;
   overflow: hidden;
+  cursor: default;
 }
 .suitableListFirst {
   border-radius: 8px 8px 0 0;
