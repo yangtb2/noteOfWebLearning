@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>手写模块管理工具</title>
+  </head>
+  <body></body>
+  <script>
+    "use strict";
+    let module = (function () {
+      const moduleList = {};
+      function define(module, dependencies, action) {
+        dependencies.map((m, i) => {
+          dependencies[i] = moduleList[m];
+        });
+        moduleList[module] = action.apply(null, dependencies);
+      }
+      return { define };
+    })();
+
+    module.define("arr", [], function () {
+      return {
+        first(arr) {
+          return arr[0];
+        },
+        max(arr, key) {
+          return arr.reduce((a, b) => (b[key] > a[key] ? b : a));
+        }
+      };
+    });
+
+    module.define("lesson", ["arr"], function (...dependencies) {
+      let data = [
+        { name: "js", price: 199 },
+        { name: "mysql", price: 100 }
+      ];
+      console.log(dependencies[0].max(data, "price"));
+    });
+  </script>
+</html>
