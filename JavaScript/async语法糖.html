@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>async语法糖</title>
+  </head>
+  <body>
+    <script>
+      "use strict";
+      async function promise() {
+        console.log("promise1开始执行");
+        let value = await new Promise((resolve) => {
+          console.log("promise1.then执行了，返回了一个新的promise");
+          setTimeout(() => {
+            console.log("新promise创建的定时器的宏任务开始执行");
+            resolve("新promise.resolve被调用了，新promise.then准备执行");
+          }, 1000);
+        });
+        console.log(value);
+        console.log("新promise.then被执行了");
+      }
+      promise();
+      console.log("主程序结束");
+
+      //上述代码等同于
+      // new Promise((resolve) => {
+      //   console.log("promise1开始执行");
+      //   resolve();
+      // })
+      //   .then((value) => {
+      //     console.log("promise1.then执行了，返回了一个新的promise");
+      //     return new Promise((resolve) => {
+      //       setTimeout(() => {
+      //         console.log("新promise创建的定时器的宏任务开始执行");
+      //         resolve("新promise.resolve被调用了，新promise.then准备执行");
+      //       }, 1000);
+      //     });
+      //   })
+      //   .then((value) => {
+      //     console.log(value);
+      //     console.log("新promise.then被执行了");
+      //   });
+      // console.log("主程序结束");
+    </script>
+  </body>
+</html>

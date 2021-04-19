@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Promise队列的实现</title>
+  </head>
+  <body>
+    <script>
+      "use strict";
+      // function queue(arr) {
+      //   let promise = Promise.resolve();
+      //   arr.map((val) => {
+      //     promise = promise.then((_) => {
+      //       return new Promise((resolve) => {
+      //         setTimeout(() => {
+      //           console.log(val);
+      //           resolve();
+      //         }, 1000);
+      //       });
+      //     });
+      //   });
+      // }
+      function queue(arr) {
+        let promise = Promise.resolve();
+        arr.reduce((p, v) => {
+          return p.then((_) => {
+            return new Promise((resolve) => {
+              setTimeout(() => {
+                console.log(v);
+                resolve();
+              }, 1000);
+            });
+          });
+        }, promise);
+      }
+      queue([1, 2, 3]);
+    </script>
+  </body>
+</html>
