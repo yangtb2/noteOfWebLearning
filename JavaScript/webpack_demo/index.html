@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>await实现的加载进度条</title>
+    <!-- <style>
+      div {
+        height: 50px;
+        width: 500px;
+      }
+      #loading {
+        height: 100%;
+        width: 0%;
+        background-color: #3e0849;
+        text-align: center;
+        color: #ffffff;
+        line-height: 50px;
+        font-size: x-large;
+      }
+    </style> -->
+  </head>
+  <body>
+    <div>
+      <div id="loading"></div>
+    </div>
+    <script src="./dist/bundle.js"></script>
+    <script>
+      // webpack-dev-server热更新打包的文件默认为./bundle.js
+      //与webpack的输出配置无关，可以用publicPath属性更改
+    </script>
+  </body>
+</html>

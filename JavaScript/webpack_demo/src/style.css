@@ -1,0 +1,13 @@
+div {
+  height: 50px;
+  width: 500px;
+}
+#loading {
+  height: 100%;
+  width: 0%;
+  background-color: #3e0849;
+  text-align: center;
+  color: #ffffff;
+  line-height: 50px;
+  font-size: x-large;
+}
