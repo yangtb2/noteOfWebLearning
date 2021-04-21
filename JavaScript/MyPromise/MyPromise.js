@@ -1,4 +1,4 @@
-class MyPromise {
+export default class MyPromise {
   static PENDING = "pending";
 
   static FULFILLED = "fulfilled";

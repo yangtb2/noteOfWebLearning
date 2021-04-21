@@ -7,34 +7,33 @@
     <title>手写promise应用实例</title>
   </head>
   <body>
-    <script src="./MyPromise.js"></script>
-    <script>
-      "use strict";
+    <script type="module">
+      import MyPromise from "./MyPromise.js";
       /*
        *用来测试在没有后续的then处理的Exception能否抛出
        */
-      // let p = new MyPromise((resolve, reject) => {
-      //   // throw new Error("error");
-      //   resolve("stop");
-      // })
-      //   .then(
-      //     (value) => {
-      //       // throw new Error("error");
-      //       console.log(value);
-      //     },
-      //     (reason) => {
-      //       console.log(reason);
-      //     }
-      //   )
-      //   .then(
-      //     (value) => {
-      //       throw new Error("error");
-      //       console.log(value);
-      //     },
-      //     (reason) => {
-      //       console.log(reason);
-      //     }
-      //   );
+      let p = new MyPromise((resolve, reject) => {
+        // throw new Error("error");
+        resolve("stop");
+      })
+        .then(
+          (value) => {
+            // throw new Error("error");
+            console.log(value);
+          },
+          (reason) => {
+            console.log(reason);
+          }
+        )
+        .then(
+          (value) => {
+            throw new Error("error");
+            console.log(value);
+          },
+          (reason) => {
+            console.log(reason);
+          }
+        );
 
       /*
        *测试静态resolve和reject方法
@@ -73,24 +72,24 @@
       /*
        *测试静态race方法
        */
-      let p1 = new MyPromise((resolve, reject) => {
-        setTimeout(() => {
-          resolve("fulfilled");
-        }, 2000);
-      });
-      let p2 = new MyPromise((resolve, reject) => {
-        setTimeout(() => {
-          reject("rejected");
-        }, 1000);
-      });
-      MyPromise.race([p1, p2]).then(
-        (value) => {
-          console.log(value);
-        },
-        (reason) => {
-          console.log(reason);
-        }
-      );
+      // let p1 = new MyPromise((resolve, reject) => {
+      //   setTimeout(() => {
+      //     resolve("fulfilled");
+      //   }, 2000);
+      // });
+      // let p2 = new MyPromise((resolve, reject) => {
+      //   setTimeout(() => {
+      //     reject("rejected");
+      //   }, 1000);
+      // });
+      // MyPromise.race([p1, p2]).then(
+      //   (value) => {
+      //     console.log(value);
+      //   },
+      //   (reason) => {
+      //     console.log(reason);
+      //   }
+      // );
     </script>
   </body>
 </html>
