@@ -20,12 +20,13 @@ class MyPromise {
     if (this.status == MyPromise.PENDING) {
       this.status = MyPromise.FULFILLED;
       this.value = value;
-    }
-    this.callbacks.forEach((callback) => {
-      setTimeout(() => {
-        callback.onFulfilled(this.value);
+
+      this.callbacks.forEach((callback) => {
+        setTimeout(() => {
+          callback.onFulfilled(this.value);
+        });
       });
-    });
+    }
   }
 
   reject(reason) {
@@ -37,19 +38,18 @@ class MyPromise {
         this.exception = true;
       }
       setTimeout(() => {
+        if (this.exception) {
+          throw reason;
+        }
+      });
+
+      this.callbacks.forEach((callback) => {
+        this.exception = false;
         setTimeout(() => {
-          if (this.exception) {
-            throw reason;
-          }
+          callback.onRejected(this.value);
         });
       });
     }
-    this.callbacks.forEach((callback) => {
-      this.exception = false;
-      setTimeout(() => {
-        callback.onRejected(this.value);
-      });
-    });
   }
 
   then(onFulfilled, onRejected) {
@@ -111,5 +111,59 @@ class MyPromise {
     } else {
       resolve(result);
     }
+  }
+
+  static resolve(value) {
+    if (value instanceof MyPromise) {
+      return value;
+    } else {
+      return new MyPromise((resolve, reject) => {
+        resolve(value);
+      });
+    }
+  }
+
+  static reject(value) {
+    if (value instanceof MyPromise) {
+      return value;
+    } else {
+      return new MyPromise((resolve, reject) => {
+        reject(value);
+      });
+    }
+  }
+
+  static all(promises) {
+    return new MyPromise((resolve, reject) => {
+      const values = [];
+      promises.forEach((promise) => {
+        promise.then(
+          (value) => {
+            values.push(value);
+            if (values.length == promises.length) {
+              resolve(values);
+            }
+          },
+          (reason) => {
+            reject(reason);
+          }
+        );
+      });
+    });
+  }
+
+  static race(promises) {
+    return new MyPromise((resolve, reject) => {
+      promises.forEach((promise) => {
+        promise.then(
+          (value) => {
+            resolve(value);
+          },
+          (reason) => {
+            reject(reason);
+          }
+        );
+      });
+    });
   }
 }
