@@ -9,37 +9,49 @@
   <body>
     <script>
       "use strict";
-      let p = new Promise((resolve, reject) => {
-        reject("stop");
-      })
-        .then(
-          (value) => {
-            console.log(value);
-            // return new MyPromise((resolve, reject) => {
-            //   setTimeout(() => {
-            //     reject("errorrrrrr");
-            //   }, 1000);
-            // });
-          },
-          (reason) => {
-            // throw new Error("error");
-            console.log("reason:" + reason);
-            return "rejected";
-          }
-        )
-        .then(
-          (value) => {
-            console.dir(p);
-            throw new Error("error");
-            console.log(value);
-          },
-          (reason) => {
-            console.log(reason);
-          }
-        );
+      // let p = new Promise((resolve, reject) => {
+      //   reject("stop");
+      // })
+      //   .then(
+      //     (value) => {
+      //       console.log(value);
+      //       // return new MyPromise((resolve, reject) => {
+      //       //   setTimeout(() => {
+      //       //     reject("errorrrrrr");
+      //       //   }, 1000);
+      //       // });
+      //     },
+      //     (reason) => {
+      //       // throw new Error("error");
+      //       console.log("reason:" + reason);
+      //       return "rejected";
+      //     }
+      //   )
+      //   .then(
+      //     (value) => {
+      //       console.dir(p);
+      //       throw new Error("error");
+      //       console.log(value);
+      //     },
+      //     (reason) => {
+      //       console.log(reason);
+      //     }
+      //   );
       // let p = promise.then((value) => {
       //   return p;
       // });
+      setTimeout(() => {
+        console.log("B");
+      });
+      new Promise((reslove) => {
+        console.log("A.A");
+        reslove();
+      }).then((value) => {
+        console.log("A.B");
+      });
+      setTimeout(() => {
+        console.log("C");
+      });
     </script>
   </body>
 </html>

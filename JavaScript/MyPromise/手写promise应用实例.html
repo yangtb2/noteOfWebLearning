@@ -12,28 +12,28 @@
       /*
        *用来测试在没有后续的then处理的Exception能否抛出
        */
-      let p = new MyPromise((resolve, reject) => {
-        // throw new Error("error");
-        resolve("stop");
-      })
-        .then(
-          (value) => {
-            // throw new Error("error");
-            console.log(value);
-          },
-          (reason) => {
-            console.log(reason);
-          }
-        )
-        .then(
-          (value) => {
-            throw new Error("error");
-            console.log(value);
-          },
-          (reason) => {
-            console.log(reason);
-          }
-        );
+      // let p = new MyPromise((resolve, reject) => {
+      //   // throw new Error("error");
+      //   resolve("stop");
+      // })
+      //   .then(
+      //     (value) => {
+      //       // throw new Error("error");
+      //       console.log(value);
+      //     },
+      //     (reason) => {
+      //       console.log(reason);
+      //     }
+      //   )
+      //   .then(
+      //     (value) => {
+      //       throw new Error("error");
+      //       console.log(value);
+      //     },
+      //     (reason) => {
+      //       console.log(reason);
+      //     }
+      //   );
 
       /*
        *测试静态resolve和reject方法
@@ -90,6 +90,20 @@
       //     console.log(reason);
       //   }
       // );
+
+      setTimeout(() => {
+        console.log("B");
+      });
+      new MyPromise((reslove) => {
+        console.log("A.A");
+        reslove();
+      }).then((value) => {
+        console.log("A.B");
+      });
+      setTimeout(() => {
+        console.log("C");
+      });
+      MyPromise.require();
     </script>
   </body>
 </html>

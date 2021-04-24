@@ -5,6 +5,8 @@ export default class MyPromise {
 
   static REJECTED = "rejected";
 
+  static questQueue = [];
+
   constructor(executor) {
     this.status = MyPromise.PENDING;
     this.value = null;
@@ -22,9 +24,7 @@ export default class MyPromise {
       this.value = value;
 
       this.callbacks.forEach((callback) => {
-        setTimeout(() => {
-          callback.onFulfilled(this.value);
-        });
+        MyPromise.questQueue.push(() => callback.onFulfilled(this.value));
       });
     }
   }
@@ -45,9 +45,7 @@ export default class MyPromise {
 
       this.callbacks.forEach((callback) => {
         this.exception = false;
-        setTimeout(() => {
-          callback.onRejected(this.value);
-        });
+        MyPromise.questQueue.push(() => callback.onRejected(this.value));
       });
     }
   }
@@ -81,7 +79,7 @@ export default class MyPromise {
         });
       }
       if (this.status == MyPromise.FULFILLED) {
-        setTimeout(() => {
+        MyPromise.questQueue.push(() => {
           try {
             this.parse(promise, onFulfilled(this.value), resolve, reject);
           } catch (error) {
@@ -90,7 +88,7 @@ export default class MyPromise {
         });
       }
       if (this.status == MyPromise.REJECTED) {
-        setTimeout(() => {
+        MyPromise.push(() => {
           try {
             this.parse(promise, onRejected(this.value), resolve, reject);
           } catch (error) {
@@ -165,5 +163,11 @@ export default class MyPromise {
         );
       });
     });
+  }
+
+  static require() {
+    while (MyPromise.questQueue.length > 0) {
+      MyPromise.questQueue.shift()();
+    }
   }
 }
